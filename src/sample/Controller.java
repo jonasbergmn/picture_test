@@ -38,6 +38,9 @@ public class Controller {
 
         gr.add(l, 9,9);
 
+        for(int i = 0; i<conc().length; i++){
+            System.out.println(conc()[i]);
+        }
 
 
     }
@@ -62,17 +65,47 @@ public class Controller {
         Image image = new Image(new FileInputStream(path));
         int[] x = o.werteToInt();
 
-        for (int i = 0; i < o.werteToInt().length; i++) {
+/*        for (int i = 0; i < o.werteToInt().length; i++) {
             for (int j = 0; j < o.werteToInt()[i]; j++) {
                 ImageView iview = new ImageView(image);
                 gr.add(iview, j+1, i+1);
             }
+        }*/
+
+        for (int i = 0; i < conc().length; i++) {
+            for (int j = 0; j < conc()[i]; j++) {
+                ImageView iview = new ImageView(image);
+                gr.add(iview, j+1, i+1);
+            }
         }
+
+
     }
 
     public int[] conc (){
-        
-        return null;
+
+
+
+        Import i = new Import("C:\\Users\\joebe\\IdeaProjects\\picture_test\\src\\sample\\bacsv.CSV");
+        Objekt o = i.createObjekt(1);
+        Objekt o2 = i.createObjekt(2);
+        int[] conc = new int[o.werteToInt().length*2];
+        int counter = 0;
+
+        for(int j = 0; j<o.getWerte().length*2; j++){
+            if(j < o.getWerte().length){
+                conc[j] = o.werteToInt()[j];
+            }
+            else {
+                conc[j] = o2.werteToInt()[counter];
+            }
+            if(j>=o.getWerte().length){
+                counter +=1;
+            }
+
+        }
+
+        return conc;
     }
 
 
