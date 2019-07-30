@@ -1,7 +1,5 @@
 package sample;
-
 //import com.sun.javafx.scene.ImageViewHelper;
-
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
@@ -108,7 +106,6 @@ public class Controller {
     }
 
     public void fillGrid2(String path, String path1, String path2, int anzObjekte) throws FileNotFoundException {
-
         int counterRow = 0;
         int counterColumn = 0;
 
@@ -125,6 +122,14 @@ public class Controller {
 
         GridPane grEbene = new GridPane();
 
+        Image image = new Image(new FileInputStream(path));
+        Image image2 = new Image(new FileInputStream(path1));
+        Image[] arrayImages = new Image[2];
+        arrayImages[0] = image;
+        arrayImages[1] = image2;
+        System.out.println(image.getHeight());
+        System.out.println(image.getWidth());
+
         for (int i = 0; i < e.getWerteEbene().length; i++) {
             Label label = new Label(e.getWerteEbene()[i]);
             label.setMinHeight(50);
@@ -135,13 +140,7 @@ public class Controller {
 
         paneEbene.getChildren().add(grEbene);
 
-        Image image = new Image(new FileInputStream(path));
-        Image image2 = new Image(new FileInputStream(path1));
-        Image[] arrayImages = new Image[2];
-        arrayImages[0] = image;
-        arrayImages[1] = image2;
-        System.out.println(image.getHeight());
-        System.out.println(image.getWidth());
+
 
 /*
         for (int i = 0; i < oListe[0].werteToInt().length; i++) {
@@ -155,14 +154,19 @@ public class Controller {
             }
         }*/
 
+        //für ggt test
+        int[] testggc = {60,70,80,80,90,50,50,50,50,50};
+
         for(int k = 0; k<anzObjekte; k++) {
             boolean b=false;
             GridPane grx = new GridPane();
             int counterRow2 = 0;
             int counterColum2 = 0;
             for(int i = 0; i < oListe[k].werteToInt().length; i++){
-                for (int j = 0; j < oListe[k].werteToInt()[i]; j++) {
+                for (int j = 0; j < oListe[k].werteToInt()[i]/ggt(testggc); j++) {
                     ImageView iview = new ImageView(arrayImages[k]);
+                    iview.setFitWidth(25);
+                    iview.setFitHeight(50);
                     grx.addRow(counterRow2);
                     grx.addColumn(counterColum2);
                     grx.add(iview, j+1, i+1);
@@ -181,4 +185,18 @@ public class Controller {
             System.out.println(ap.getChildren().sorted().get(i));
         }
     }
+
+    public int ggt (int values[]){
+
+        int a = values[0];
+        int b = 0;
+        for(int i = 1; i<values.length;i++){
+            b = values[i];
+            while(b!=0){
+                b = a % (a=b);
+            }
+        }
+        return a;
+    }
+
 }

@@ -11,9 +11,8 @@
 
 <AnchorPane fx:id="ap" prefHeight="658.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <Button fx:id="button" layoutX="7.0" layoutY="622.0" mnemonicParsing="false" onAction="#buttonClick" text="Button" />
-      <Pane fx:id="paneLeft" layoutX="147.0" layoutY="25.0" prefHeight="519.0" prefWidth="323.0" />
-      <Pane fx:id="paneRight" layoutX="514.0" layoutY="25.0" prefHeight="519.0" prefWidth="323.0" />
+      <Pane fx:id="paneLeft" layoutX="147.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="323.0" />
+      <Pane fx:id="paneRight" layoutX="514.0" layoutY="25.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="323.0" />
       <Pane fx:id="paneEbene" layoutX="33.0" layoutY="25.0" prefHeight="519.0" prefWidth="99.0" />
    </children>
 </AnchorPane>

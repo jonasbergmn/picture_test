@@ -34,6 +34,8 @@ public class importController {
         textfield.setText(Integer.toString(x.size()-1));
         if(x.size()-1 < 2){
             buttonImage2.setDisable(true);
+        } else {
+            buttonImage2.setDisable(false);
         }
 
     }
@@ -60,7 +62,8 @@ public class importController {
 
             System.out.println(scene2Controller.getValues(this.pathFile));
             scene2Controller.fillGrid2(this.pathImage, this.pathImage2, this.pathFile, Integer.parseInt(textfield.getText()));
-
+//            int[] test = {60,70,80,80,90,50,50,50,50,50};
+//            System.out.println("GGT: " + scene2Controller.ggt(test));
             //Show scene 2 in new window
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
