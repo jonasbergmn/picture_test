@@ -4,27 +4,48 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class importController {
+    private static final String COMMA_DELIMITER = ";";
+    public TextField textfield;
+    public Button buttonImage2;
     String pathFile;
     String pathImage;
+    String pathImage2;
 
     public AnchorPane apImport;
 
     public void buttonFileClick(ActionEvent actionEvent) {
         this.pathFile = getPath();
         System.out.println(this.pathFile);
+        List<List<String>> x = getData(this.pathFile);
+        textfield.setText(Integer.toString(x.size()-1));
+        if(x.size()-1 < 2){
+            buttonImage2.setDisable(true);
+        }
+
     }
 
     public void buttonImageClick(ActionEvent actionEvent) {
         this.pathImage = getPath();
         System.out.println(this.pathImage);
+    }
+
+    public void buttonImage2Click(ActionEvent actionEvent) {
+        this.pathImage2 = getPath();
+        System.out.println(this.pathImage2);
     }
 
     public void buttonGoClick(ActionEvent actionEvent) throws IOException {
@@ -90,5 +111,39 @@ public class importController {
 
     public void setPathImage(String pathImage) {
         this.pathImage = pathImage;
+    }
+
+
+    public List<List<String>> getData(String path) {
+        List<List<String>> records = new ArrayList<>();
+        try (Scanner scanner = new Scanner(new File(path));) {
+            while (scanner.hasNextLine()) {
+                records.add(getRecordFromLine(scanner.nextLine()));
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        }
+
+        return records;
+
+    }
+
+    private List<String> getRecordFromLine(String line) {
+        List<String> values = new ArrayList<String>();
+        try (Scanner rowScanner = new Scanner(line)) {
+            rowScanner.useDelimiter(COMMA_DELIMITER);
+            while (rowScanner.hasNext()) {
+                values.add(rowScanner.next());
+            }
+        }
+        return values;
+    }
+
+    public String getPathImage2() {
+        return pathImage2;
+    }
+
+    public void setPathImage2(String pathImage2) {
+        this.pathImage2 = pathImage2;
     }
 }
