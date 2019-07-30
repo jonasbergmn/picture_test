@@ -59,7 +59,7 @@ public class importController {
             //Pass whatever data you want. You can have multiple method calls here
 
             System.out.println(scene2Controller.getValues(this.pathFile));
-            scene2Controller.fillGrid2(this.pathImage, this.pathFile, Integer.parseInt(textfield.getText()));
+            scene2Controller.fillGrid2(this.pathImage, this.pathImage2, this.pathFile, Integer.parseInt(textfield.getText()));
 
             //Show scene 2 in new window
             Stage stage = new Stage();

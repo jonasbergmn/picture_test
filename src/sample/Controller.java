@@ -107,7 +107,7 @@ public class Controller {
         return v;
     }
 
-    public void fillGrid2(String path, String path2, int anzObjekte) throws FileNotFoundException {
+    public void fillGrid2(String path, String path1, String path2, int anzObjekte) throws FileNotFoundException {
 
         int counterRow = 0;
         int counterColumn = 0;
@@ -136,6 +136,10 @@ public class Controller {
         paneEbene.getChildren().add(grEbene);
 
         Image image = new Image(new FileInputStream(path));
+        Image image2 = new Image(new FileInputStream(path1));
+        Image[] arrayImages = new Image[2];
+        arrayImages[0] = image;
+        arrayImages[1] = image2;
         System.out.println(image.getHeight());
         System.out.println(image.getWidth());
 
@@ -158,7 +162,7 @@ public class Controller {
             int counterColum2 = 0;
             for(int i = 0; i < oListe[k].werteToInt().length; i++){
                 for (int j = 0; j < oListe[k].werteToInt()[i]; j++) {
-                    ImageView iview = new ImageView(image);
+                    ImageView iview = new ImageView(arrayImages[k]);
                     grx.addRow(counterRow2);
                     grx.addColumn(counterColum2);
                     grx.add(iview, j+1, i+1);
@@ -166,7 +170,7 @@ public class Controller {
                     counterRow2+=1;
                 }
             }
-            if(k==1){
+            if(k==0){
                 paneLeft.getChildren().add(grx);
             }else{
                 paneRight.getChildren().add(grx);
