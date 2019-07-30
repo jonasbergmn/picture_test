@@ -34,7 +34,7 @@ public class Import {
         String[] werte = new String[x.get(objectId).size()];
         for(int i = 0; i<x.get(objectId).size(); i++){
             werte[i] = x.get(objectId).get(i);
-            //System.out.println("Objektwerte: " + werte[i]);
+            System.out.println("Objektwerte: " + werte[i]);
         }
         return werte;
     }

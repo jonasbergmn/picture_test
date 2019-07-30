@@ -1,39 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-<AnchorPane fx:id="ap" prefHeight="658.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<AnchorPane fx:id="ap" prefHeight="658.0" prefWidth="907.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <children>
-      <GridPane fx:id="gr" layoutX="208.0" layoutY="102.0" prefHeight="506.0" prefWidth="691.0" AnchorPane.bottomAnchor="36.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" />
-          <ColumnConstraints hgrow="SOMETIMES" />
-            <ColumnConstraints hgrow="SOMETIMES" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="112.79996337890623" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="161.0" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="178.60003662109375" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.00006103515625" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.00006103515625" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.00006103515625" />
-            <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.00006103515625" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-          <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-            <RowConstraints vgrow="SOMETIMES" />
-        </rowConstraints>
-      </GridPane>
       <Button fx:id="button" layoutX="7.0" layoutY="622.0" mnemonicParsing="false" onAction="#buttonClick" text="Button" />
+      <Pane fx:id="paneLeft" layoutX="147.0" layoutY="25.0" prefHeight="519.0" prefWidth="323.0" />
+      <Pane fx:id="paneRight" layoutX="514.0" layoutY="25.0" prefHeight="519.0" prefWidth="323.0" />
+      <Pane fx:id="paneEbene" layoutX="33.0" layoutY="25.0" prefHeight="519.0" prefWidth="99.0" />
    </children>
 </AnchorPane>
