@@ -49,7 +49,7 @@ public class Import {
         return ebene;
     }
 
-    public Objekt createObjekt(int objectId){
+    public Objekt createObjekt(int objectId, String path){
 
         String[] werte = importWerte(objectId);
         String name = werte[0];
@@ -61,7 +61,12 @@ public class Import {
                d[i] = 0.0;
             }
         }
-        Objekt o = new Objekt(name, d);
+        Objekt o = new Objekt(name, d,path );
+        return o;
+    }
+
+    public Objekt createObjekt(String name, int[] werte, String path){
+        Objekt o = new Objekt(name, werte, path);
         return o;
     }
 

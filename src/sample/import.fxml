@@ -11,8 +11,9 @@
       <Button fx:id="buttonFile" layoutX="54.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonFileClick" text="Datei auswählen" />
       <Button fx:id="buttonImage" layoutX="405.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonImageClick" text="Bild 1 auswählen" />
       <Button fx:id="buttonGo" layoutX="444.0" layoutY="185.0" mnemonicParsing="false" onAction="#buttonGoClick" text="Anzeigen" />
+      <Button fx:id="buttonComb" layoutX="405.0" layoutY="10" mnemonicParsing="false" onAction="#buttonCombClick" text="Piktogrammkombination" />
       <TextField fx:id="textfield" layoutX="53.0" layoutY="124.0" />
       <Label layoutX="53.0" layoutY="94.0" text="Anzahl der Objekte:" />
-      <Button fx:id="buttonImage2" layoutX="405.0" layoutY="111.0" mnemonicParsing="false" onAction="#buttonImage2Click" prefHeight="25.0" prefWidth="105.0" text="Bild 2 auswählen" />
+      <Button fx:id="buttonImage2" disable="true" layoutX="405.0" layoutY="111.0" mnemonicParsing="false" onAction="#buttonImage2Click" prefHeight="25.0" prefWidth="105.0" text="Bild 2 auswählen" />
    </children>
 </AnchorPane>

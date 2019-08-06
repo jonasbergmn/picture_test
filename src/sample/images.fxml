@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="543.0" prefWidth="1008.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.imageController">
+   <children>
+      <ImageView fx:id="iview" fitHeight="150.0" fitWidth="200.0" layoutX="283.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+      <ListView fx:id="list" layoutX="70.0" layoutY="53.0" prefHeight="200.0" prefWidth="200.0" />
+      <ListView fx:id="list1" layoutX="540.0" layoutY="53.0" prefHeight="200.0" prefWidth="200.0" />
+      <ImageView fx:id="iview1" fitHeight="150.0" fitWidth="200.0" layoutX="761.0" layoutY="78.0" pickOnBounds="true" preserveRatio="true" />
+      <Button fx:id="button1" layoutX="70.0" layoutY="405.0" mnemonicParsing="false" onAction="#buttonClick1" text="Bilder kombinieren" />
+      <TextField fx:id="textfield" layoutX="70.0" layoutY="371.0" promptText="Name eingeben" />
+      <ImageView fx:id="iview2" fitHeight="150.0" fitWidth="200.0" layoutX="540.0" layoutY="343.0" pickOnBounds="true" preserveRatio="true" />
+   </children>
+</AnchorPane>

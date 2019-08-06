@@ -15,6 +15,10 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.stage.Stage;
 
+import javax.imageio.ImageIO;
+import javax.swing.text.DefaultEditorKit;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -22,6 +26,7 @@ import java.io.IOException;
 
 
 public class Controller {
+
     public Button button;
     public GridPane gr;
     public AnchorPane ap;
@@ -30,7 +35,7 @@ public class Controller {
     public Pane paneRight;
     public Pane paneEbene;
 
-    public void buttonClick(ActionEvent actionEvent) throws IOException {
+/*    public void buttonClick(ActionEvent actionEvent) throws IOException {
         Label l = new Label("hallo");
         Label l2 = new Label("hallo2");
         Label l3 = new Label("hallo3");
@@ -46,9 +51,9 @@ public class Controller {
         }
 
 
-    }
+    }*/
 
-    public void fillGrid(String path, String path2) throws FileNotFoundException {
+/*    public void fillGrid(String path, String path2) throws FileNotFoundException {
         //Import imp = new Import("C:\\Users\\joebe\\IdeaProjects\\picture_test\\src\\sample\\bacsv.CSV");
         Import imp = new Import(path2);
         Objekt o = imp.createObjekt(1);
@@ -74,9 +79,9 @@ public class Controller {
             }
         }
 
-    }
+    }*/
 
-    public int[] conc(String path) {
+/*    public int[] conc(String path) {
 
 
         Import i = new Import(path);
@@ -98,7 +103,7 @@ public class Controller {
         }
 
         return conc;
-    }
+    }*/
 
 
     public String getValues(String v) {
@@ -106,33 +111,39 @@ public class Controller {
     }
 
     public void fillGrid2(String path, String path1, String path2, int anzObjekte) throws FileNotFoundException {
-        int counterRow = 0;
-        int counterColumn = 0;
-
-        //Import imp = new Import("C:\\Users\\joebe\\IdeaProjects\\picture_test\\src\\sample\\bacsv.CSV");
-        Import imp = new Import(path2);
-        Objekt[] oListe = new Objekt[anzObjekte];
-        for (int i = 0; i < anzObjekte; i++) {
-            oListe[i] = imp.createObjekt(i + 1);
-        }
-
-        String[] ebene = imp.importEbene();
-        Objekt[] objekte = oListe;
-        Betrachtungsebenen e = imp.createEbene(objekte, ebene);
 
         GridPane grEbene = new GridPane();
 
-        Image image = new Image(new FileInputStream(path));
-        Image image2 = new Image(new FileInputStream(path1));
+        String[] imagePaths = new String[2];
+        imagePaths[0] = path;
+        imagePaths[1] = path1;
+
+        //Import imp = new Import("C:\\Users\\joebe\\IdeaProjects\\picture_test\\src\\sample\\bacsv.CSV");
+
+        Import imp = new Import(path2);
+        Objekt[] oListe = new Objekt[anzObjekte];
+        for (int i = 0; i < anzObjekte; i++) {
+            oListe[i] = imp.createObjekt(i + 1, imagePaths[i]);
+        }
+
+        String[] ebene = imp.importEbene();
+        //Objekt[] objekte = oListe;
+        Betrachtungsebenen e = imp.createEbene(oListe, ebene);
+
+
+
+        Image image = new Image(new FileInputStream(oListe[0].getPath()));
+        Image image2 = new Image(new FileInputStream(oListe[1].getPath()));
         Image[] arrayImages = new Image[2];
         arrayImages[0] = image;
         arrayImages[1] = image2;
+
         System.out.println(image.getHeight());
         System.out.println(image.getWidth());
 
         for (int i = 0; i < e.getWerteEbene().length; i++) {
             Label label = new Label(e.getWerteEbene()[i]);
-            label.setMinHeight(50);
+            label.setMinHeight(100);
             grEbene.addRow(i);
             grEbene.addColumn(i);
             grEbene.add(label, 0, i + 1);
@@ -163,10 +174,10 @@ public class Controller {
             int counterRow2 = 0;
             int counterColum2 = 0;
             for(int i = 0; i < oListe[k].werteToInt().length; i++){
-                for (int j = 0; j < oListe[k].werteToInt()[i]/ggt(testggc); j++) {
+                for (int j = 0; j < oListe[k].werteToInt()[i]; j++) {
                     ImageView iview = new ImageView(arrayImages[k]);
-                    iview.setFitWidth(25);
-                    iview.setFitHeight(50);
+                    iview.setFitWidth(100);
+                    iview.setFitHeight(100);
                     grx.addRow(counterRow2);
                     grx.addColumn(counterColum2);
                     grx.add(iview, j+1, i+1);
@@ -198,5 +209,4 @@ public class Controller {
         }
         return a;
     }
-
 }

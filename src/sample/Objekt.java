@@ -5,10 +5,18 @@ public class Objekt {
     private String name;
     private Double[] werte;
     private int[] werteInt;
+    private String path;
 
-    public Objekt(String name, Double[] werte){
+    public Objekt(String name, Double[] werte, String path){
         this.name = name;
         this.werte = werte;
+        this.path = path;
+    }
+
+    public Objekt(String name, int[] werteInt, String path){
+        this.werteInt = werteInt;
+        this.name = name;
+        this.path = path;
     }
 
     public int[] werteToInt(){
@@ -33,5 +41,21 @@ public class Objekt {
 
     public void setWerte(Double[] werte) {
         this.werte = werte;
+    }
+
+    public int[] getWerteInt() {
+        return werteInt;
+    }
+
+    public void setWerteInt(int[] werteInt) {
+        this.werteInt = werteInt;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
     }
 }
