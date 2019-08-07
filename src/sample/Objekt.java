@@ -6,6 +6,7 @@ public class Objekt {
     private Double[] werte;
     private int[] werteInt;
     private String path;
+    private int faktor;
 
     public Objekt(String name, Double[] werte, String path){
         this.name = name;
@@ -57,5 +58,13 @@ public class Objekt {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public int getFaktor() {
+        return faktor;
+    }
+
+    public void setFaktor(int faktor) {
+        this.faktor = faktor;
     }
 }

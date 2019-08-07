@@ -1,9 +1,12 @@
 package sample;
 //import com.sun.javafx.scene.ImageViewHelper;
+import javafx.embed.swing.SwingFXUtils;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
+import javafx.scene.SnapshotParameters;
 import javafx.scene.control.Label;
+import javafx.scene.image.WritableImage;
 import javafx.scene.layout.*;
 import javafx.stage.FileChooser;
 import sample.Main;
@@ -34,6 +37,7 @@ public class Controller {
     public Pane paneLeft;
     public Pane paneRight;
     public Pane paneEbene;
+    public Button buttonSave;
 
 /*    public void buttonClick(ActionEvent actionEvent) throws IOException {
         Label l = new Label("hallo");
@@ -124,6 +128,7 @@ public class Controller {
         Objekt[] oListe = new Objekt[anzObjekte];
         for (int i = 0; i < anzObjekte; i++) {
             oListe[i] = imp.createObjekt(i + 1, imagePaths[i]);
+            oListe[i].setFaktor(10);
         }
 
         String[] ebene = imp.importEbene();
@@ -143,7 +148,7 @@ public class Controller {
 
         for (int i = 0; i < e.getWerteEbene().length; i++) {
             Label label = new Label(e.getWerteEbene()[i]);
-            label.setMinHeight(100);
+            label.setMinHeight(75);
             grEbene.addRow(i);
             grEbene.addColumn(i);
             grEbene.add(label, 0, i + 1);
@@ -166,7 +171,6 @@ public class Controller {
         }*/
 
         //für ggt test
-        int[] testggc = {60,70,80,80,90,50,50,50,50,50};
 
         for(int k = 0; k<anzObjekte; k++) {
             boolean b=false;
@@ -174,10 +178,102 @@ public class Controller {
             int counterRow2 = 0;
             int counterColum2 = 0;
             for(int i = 0; i < oListe[k].werteToInt().length; i++){
-                for (int j = 0; j < oListe[k].werteToInt()[i]; j++) {
+                for (int j = 0; j < oListe[k].werteToInt()[i]/oListe[k].getFaktor(); j++) {
                     ImageView iview = new ImageView(arrayImages[k]);
-                    iview.setFitWidth(100);
-                    iview.setFitHeight(100);
+                    iview.setFitWidth(75);
+                    iview.setFitHeight(75);
+                    grx.addRow(counterRow2);
+                    grx.addColumn(counterColum2);
+                    grx.add(iview, j+1, i+1);
+                    counterColum2+=1;
+                    counterRow2+=1;
+                }
+            }
+            if(k==0){
+                paneLeft.getChildren().add(grx);
+            }else{
+                paneRight.getChildren().add(grx);
+            }
+
+        }
+        for(int i = 0; i<ap.getChildren().sorted().size();i++) {
+            System.out.println(ap.getChildren().sorted().get(i));
+        }
+    }
+
+    public void fillGrid2(String path, String path1, String path2, int anzObjekte, int faktor) throws FileNotFoundException {
+
+        GridPane grEbene = new GridPane();
+
+        String[] imagePaths = new String[2];
+        imagePaths[0] = path;
+        imagePaths[1] = path1;
+
+        //Import imp = new Import("C:\\Users\\joebe\\IdeaProjects\\picture_test\\src\\sample\\bacsv.CSV");
+
+        Import imp = new Import(path2);
+        Objekt[] oListe = new Objekt[anzObjekte];
+
+        for (int i = 0; i < anzObjekte; i++) {
+            oListe[i] = imp.createObjekt(i + 1, imagePaths[i]);
+            oListe[i].setFaktor(10);
+        }
+
+        String[] ebene = imp.importEbene();
+        //Objekt[] objekte = oListe;
+        Betrachtungsebenen e = imp.createEbene(oListe, ebene);
+
+
+
+        Image image = new Image(new FileInputStream(oListe[0].getPath()));
+        Image image2 = new Image(new FileInputStream(oListe[1].getPath()));
+        Image[] arrayImages = new Image[2];
+        arrayImages[0] = image;
+        arrayImages[1] = image2;
+
+        System.out.println(image.getHeight());
+        System.out.println(image.getWidth());
+
+        for (int i = 0; i < e.getWerteEbene().length; i++) {
+            Label label = new Label(e.getWerteEbene()[i]);
+            label.setMinHeight(75);
+            grEbene.addRow(i);
+            grEbene.addColumn(i);
+            grEbene.add(label, 0, i + 1);
+        }
+
+        paneEbene.getChildren().add(grEbene);
+
+
+
+/*
+        for (int i = 0; i < oListe[0].werteToInt().length; i++) {
+            for (int j = 0; j < oListe[0].werteToInt()[i]; j++) {
+                ImageView iview = new ImageView(image);
+                gr.addRow(counterRow);
+                gr.addColumn(counterColumn);
+                gr.add(iview, j + 1, i + 1);
+                counterColumn += 1;
+                counterRow += 1;
+            }
+        }*/
+
+        //für ggt test
+
+        for(int k = 0; k<anzObjekte; k++) {
+            boolean b=false;
+            GridPane grx = new GridPane();
+            int counterRow2 = 0;
+            int counterColum2 = 0;
+            for(int i = 0; i < oListe[k].werteToInt().length; i++){
+                System.out.println(oListe[k].werteToInt()[i]/faktor);
+                int tmpInt = oListe[k].werteToInt()[i]/faktor;
+                tmpInt = (int)Math.ceil(tmpInt);
+                System.out.println(tmpInt);
+                for (int j = 0; j < tmpInt; j++) {
+                    ImageView iview = new ImageView(arrayImages[k]);
+                    iview.setFitWidth(75);
+                    iview.setFitHeight(75);
                     grx.addRow(counterRow2);
                     grx.addColumn(counterColum2);
                     grx.add(iview, j+1, i+1);
@@ -208,5 +304,18 @@ public class Controller {
             }
         }
         return a;
+    }
+
+    public void buttonSaveClick(ActionEvent actionEvent) {
+        buttonSave.setVisible(false);
+        WritableImage image = ap.snapshot(new SnapshotParameters(), null);
+        File file = new File("C:\\Users\\joebe\\Desktop\\images\\saves\\chart.png");
+
+        try {
+            ImageIO.write(SwingFXUtils.fromFXImage(image, null), "png", file);
+        } catch (IOException e) {
+            // TODO: abfangen
+        }
+        buttonSave.setVisible(true);
     }
 }

@@ -148,7 +148,7 @@ public class imageController {
             BufferedImage tmpImg = new BufferedImage(overlay.getWidth(), overlay.getHeight(),
                     BufferedImage.TYPE_INT_ARGB);
             Graphics2D g2d = (Graphics2D) tmpImg.getGraphics();
-            g2d.setComposite(AlphaComposite.SrcOver.derive(0.5f));
+            g2d.setComposite(AlphaComposite.SrcOver.derive(0.4f));
             // set the transparency level in range 0.0f - 1.0f
             g2d.drawImage(overlay, 0, 0, null);
             overlay = tmpImg;
