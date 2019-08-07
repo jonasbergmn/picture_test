@@ -9,7 +9,7 @@
 <AnchorPane fx:id="apImport" prefHeight="231.0" prefWidth="522.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.importController">
    <children>
       <Button fx:id="buttonFile" layoutX="54.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonFileClick" text="Datei auswählen" />
-      <Button fx:id="buttonImage" layoutX="405.0" layoutY="56.0" mnemonicParsing="false" onAction="#buttonImageClick" text="Bild 1 auswählen" />
+      <Button fx:id="buttonImage" layoutX="405.0" layoutY="56.0" disable="true" mnemonicParsing="false" onAction="#buttonImageClick" text="Bild 1 auswählen" />
       <Button fx:id="buttonGo" layoutX="444.0" layoutY="185.0" mnemonicParsing="false" onAction="#buttonGoClick" text="Anzeigen" />
       <Button fx:id="buttonComb" layoutX="405.0" layoutY="10" mnemonicParsing="false" onAction="#buttonCombClick" text="Piktogrammkombination" />
       <Label layoutX="53.0" layoutY="94.0" text="Anzahl der Objekte:" />

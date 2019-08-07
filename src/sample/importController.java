@@ -26,6 +26,7 @@ public class importController {
     public TextField textFaktor;
     public Label labelAnz;
     public Label labelEmpf;
+    public Button buttonImage;
     String pathFile;
     String pathImage;
     String pathImage2;
@@ -37,6 +38,9 @@ public class importController {
         System.out.println(this.pathFile);
         List<List<String>> x = getData(this.pathFile);
         labelAnz.setText(Integer.toString(x.size()-1));
+        if(x.size()-1 < 1){
+            buttonImage.setDisable(true);
+        }
         if(x.size()-1 < 2){
             buttonImage2.setDisable(true);
         } else {
